@@ -29,7 +29,10 @@ $(NAME): $(OBJ)
 $(NAME_B): $(OBJ_B)
 	@$(CC) $(CFLAGS) $(OBJ_B) -o $(NAME_B) -lmlx -framework OpenGL -framework AppKit
 
-%.o: %.c so_long.h so_long_bonus.h
+%.o: %.c ./Mandatory/so_long.h 
+	@$(CC) $(CFLAGS) -o $@ -c $<
+	
+bonus/%.o: bonus/%.c  ./Bonus/so_long_bonus.h
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 all: $(NAME)
